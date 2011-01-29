@@ -1,0 +1,35 @@
+client raise
+会话[登录/注销]
+session_t* session_create(const char* no);
+void session_destroy(session_t* session);
+void session_login(session_t* session, const char* password);
+void session_logout(session_t* session);
+个人[获取信息/修改资料/修改状态/修改签名/发送短信/添加好友/删除好友]
+void user_retrieve_info(user_t* user);
+void user_set_authority(user_t* user, field_t field, const char* text, int authority);
+void user_set_status(user_t* user, status_t type);
+void user_set_moodphrase(user_t* user, const char* moodphrase);
+void user_send_sms(user_t* user, const char* text);
+void user_add_buddy(user_t* user, const char* buddyno);
+void user_delete_buddy(user_t* user, const char* buddyid);
+分组[新增分组/删除分组]
+void group_add(group_list_t* grouplist, const char* name);
+void group_delete(group_list_t* grouplist, const char* name);
+好友[获取信息/分组好友/发起对话/发送短信]
+void contact_retrieve_info(contact_t* contact);
+void contact_set_group(contact_t* contact, const char* groupname);
+void contact_init_chat(contact_t* contact);
+void contact_send_sms(contact_t* contact, const char* text);
+对话[邀请好友/发消息/发屏幕抖动]
+void chat_invite_contact(chat_t* chat, const char* buddyid);
+void chat_send_message(chat_t* chat, const char* content);
+void chat_send_nudge(chat_t* chat);
+聊天室/群
+void chatroom_send_message(chatroom_t* chatroom, const char* content);
+
+client handle
+系统消息
+进入对话
+好友状态
+收消息
+收屏幕抖动
